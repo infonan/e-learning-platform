@@ -91,7 +91,7 @@ a:focus {
   width: 87%;
 }
 .slider-container {
-  width: 90%;
+  width: 100%;
   max-height: auto;
   overflow: hidden;
   position: relative;
