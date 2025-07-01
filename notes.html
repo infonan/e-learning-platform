@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Course Notes</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+  #notes-title {
+    margin: 3rem auto;
+  }
+    .notes-container {
+      max-width: 90%;
+      margin: 2rem auto;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .note-card {
+      background: #fff;
+      border-radius: 0.75rem;
+      box-shadow: 0 0.2rem 0.6rem rgba(0, 0, 0, 0.08);
+      padding: 1.4rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .note-card h3 {
+      margin-bottom: 0.7rem;
+      color: #007bff;
+    }
+
+    .note-card ul {
+      padding-left: 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .note-card ul li {
+      margin-bottom: 0.5rem;
+    }
+
+    .download-btn {
+      background-color: #28a745;
+      color: white;
+      padding: 0.6rem 1.2rem;
+      border: none;
+      border-radius: 0.4rem;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .download-btn:hover {
+      background-color: #218838;
+    }
+
+    .coming-soon {
+      text-align: center;
+      font-size: 1.2rem;
+      color: #999;
+      margin-top: 3rem;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="compname">📚 INFONAN LEARN</div>
+  <nav id="nav1">
+    <ul>
+      <li><a href="home.html"><i class="fas fa-home"></i> Home</a></li>
+      <li><a href="mycourse.html"><i class="fas fa-book"></i> My Courses</a></li>
+      <li><a href="profile.html"><i class="fas fa-user"></i> Profile</a></li>
+    </ul>
+  </nav>
+</header>
+<h2 id="notes-title"> NOTES & MATERIALS </h2>
+<div class="notes-container">
+  <div class="note-card">
+    <h3>Web Development Notes</h3>
+    <ul>
+      <li>HTML Basics</li>
+      <li>CSS Grid & Flexbox</li>
+      <li>JavaScript DOM Manipulation</li>
+    </ul>
+    <button class="download-btn"><i class="fas fa-download"></i> Download Notes</button>
+  </div>
+
+  <div class="note-card">
+    <h3>Python Programming Notes</h3>
+    <ul>
+      <li>Variables & Data Types</li>
+      <li>Loops and Conditionals</li>
+      <li>Functions & Modules</li>
+    </ul>
+    <button class="download-btn"><i class="fas fa-download"></i> Download Notes</button>
+  </div>
+
+  <div class="note-card">
+    <h3>DSA (Data Structures & Algorithms)</h3>
+    <ul>
+      <li>Arrays & Linked Lists</li>
+      <li>Stacks and Queues</li>
+      <li>Sorting Techniques</li>
+    </ul>
+    <button class="download-btn"><i class="fas fa-download"></i> Download Notes</button>
+  </div>
+
+  <div class="coming-soon">More notes will be available soon! Stay tuned.</div>
+</div>
+<footer class="site-footer">
+  <div class="footer-content">
+    <p>Connect with us:</p>
+    <div class="social-links">
+      <a href="#" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
+      <a href="#" target="_blank"><i class="fab fa-twitter"></i> Twitter</a>
+      <a href="#" target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
+    </div>
+    <p class="copyright">
+      © 2025 infonan learning. All rights reserved.
+    </p>
+  </div>
+</footer>
+
+</body>
+</html>
