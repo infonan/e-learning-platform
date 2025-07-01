@@ -403,7 +403,7 @@ body {
   transform: translateY(-0.4rem);
 }
 
-.course-card h2 {
+.course-card h3 {
   margin-top: 0.2rem;
   color: #333;
 }
