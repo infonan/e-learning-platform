@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Payment</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600&display=swap" rel="stylesheet">
+   <!-- custom icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="style.css">
+  <!-- custom fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+
+    .payment-container {
+      position: relative;
+      top: 36vh;
+      max-width: 80%;
+      background: #fff;
+      padding: 2rem;
+      margin: auto;
+      border-radius: 1rem;
+      box-shadow: 0 0 1rem rgba(0,0,0,0.1);
+      text-align: center;
+    }
+
+    h2 {
+      margin-bottom: 1rem;
+      font-size: 1.8rem;
+    }
+
+    .amount {
+      font-size: 1.4rem;
+      font-weight: 600;
+      color: #007bff;
+      margin-bottom: 1.5rem;
+    }
+
+    button {
+      background-color: #28a745;
+      color: white;
+      border: none;
+      padding: 0.9rem 1.8rem;
+      border-radius: 0.7rem;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #218838;
+    }
+  </style>
+</head>
+<body>
+    <header>
+    <div class="compname">📚 INFONAN LEARN</div>
+    <nav id="nav1">
+      <ul>
+        <li><a href="home.html"><i class="fas fa-home"></i>Home</a></li>
+        
+        <li><a href="mycourse.html"><i class="fas fa-book"></i>My Courses</a></li>
+        <li><a href= "profile.html"><i class="fas fa-user"></i>Profile</a></li>
+      </ul>
+    </nav>
+  </header>
+  <div class="payment-container">
+    <h2>Confirm Payment</h2>
+    <p class="amount" id="course-amount">Loading...</p>
+    <button onclick="completePayment()">Pay Now</button>
+  </div>
+  <br>
+  <footer class="site-footer">
+  <div class="footer-content">
+    <p>Connect with us:</p>
+    <div class="social-links">
+      <a href="#" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
+      <a href="#" target="_blank"><i class="fab fa-twitter"></i> Twitter</a>
+      <a href="#" target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
+    </div>
+    <p class="copyright">
+      © 2025 infonan learning. All rights reserved.
+    </p>
+  </div>
+</footer>
+
+  <script>
+    const selectedCourse = JSON.parse(localStorage.getItem("selectedCourse"));
+
+    if (selectedCourse && selectedCourse.price) {
+      document.getElementById("course-amount").textContent = `Amount: ₹${selectedCourse.price}`;
+    } else {
+      document.getElementById("course-amount").textContent = "Amount: ₹0";
+    }
+
+    function completePayment() {
+      if (!selectedCourse) return;
+
+      let enrolledCourses = JSON.parse(localStorage.getItem("enrolledCourses")) || [];
+
+      const alreadyEnrolled = enrolledCourses.some(course => course.title === selectedCourse.title);
+
+      if (!alreadyEnrolled) {
+        enrolledCourses.push(selectedCourse);
+        localStorage.setItem("enrolledCourses", JSON.stringify(enrolledCourses));
+      }
+
+      localStorage.removeItem("selectedCourse");
+
+      alert("Payment successful! You're enrolled.");
+      window.location.href = "mycourse.html";
+    }
+  </script>
+
+</body>
+</html>
