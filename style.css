@@ -364,6 +364,18 @@ body {
   text-decoration: none;
   color: inherit;
 }
+.explore-course-button button {
+  padding: 0.6rem;
+  background-color: limegreen;
+  font-size: 1.5rem;
+  margin: 0.5rem auto 3rem;
+  border: 0.1rem solid #ddd;
+  border-radius: 0.4rem;
+  color: white;
+}
+.explore-course-button button:hover {
+  background-color: darkgreen;
+}
 /* Courses Page Styling */
 
 .courses-container {
