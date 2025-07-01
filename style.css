@@ -385,6 +385,7 @@ body {
   padding: 1.25rem;
   flex-direction: column;
   align-items: center;
+  max-width: 70rem ;
 }
 
 .course-card {
