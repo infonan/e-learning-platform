@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Enroll Course</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+ <!-- custom icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="style.css">
+  <!-- custom fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    .enroll-page {
+     max-width: 95%;
+     margin: auto;
+      background: white;
+      padding: 1.85rem;
+      border-radius: 0.8rem;
+      box-shadow: 0 0 0.8rem rgba(0,0,0,0.1);
+      text-align: center;
+    }
+
+    .enroll-page img {
+      max-width: 100%;
+      height: auto;
+      margin: 1.25rem 0;
+      border-radius: 0.5rem;
+    }
+
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    p {
+      font-size: 1.1rem;
+      color: #444;
+      margin: 0.5rem 0;
+    }
+
+    #course-price {
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: #007bff;
+      margin-top: 0.75rem;
+    }
+
+    button {
+      background-color: #007bff;
+      color: white;
+      border: none;
+      padding: 0.8rem 1.5rem;
+      border-radius: 0.9rem;
+      cursor: pointer;
+      margin-top: 1.2rem;
+      font-size: 1rem;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    .platform-features {
+      margin-top: 2.4rem;
+    }
+
+    .platform-features h2 {
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+    }
+
+    .features-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1.4rem;
+      margin-top: 1.25rem;
+    }
+
+    .feature-card {
+      background-color: #f1f1f1;
+      border-radius: 0.75rem;
+      padding: 1.3rem;
+      width: 32rem;
+      text-align: center;
+    }
+
+    .feature-card i {
+      font-size: 4rem;
+      color: #007bff;
+      margin-bottom: 0.75rem;
+    }
+    .site-footer p{
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="compname">📚 INFONAN LEARN</div>
+    <nav id="nav1">
+      <ul>
+        <li><a href="home.html"><i class="fas fa-home"></i>Home</a></li>
+        
+        <li><a href="mycourse.html"><i class="fas fa-book"></i>My Courses</a></li>
+        <li><a href= "profile.html"><i class="fas fa-user"></i>Profile</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="enroll-page">
+    <h1 id="course-title">Loading...</h1>
+    <img id="course-img" src="" alt="Course Image">
+    <p id="course-instructor"></p>
+    <p id="course-description"></p>
+    <p id="course-price"></p>
+
+    <section class="platform-features">
+      <h2>Why Learn with Us?</h2>
+      <div class="features-container">
+        <div class="feature-card">
+          <i class="fas fa-video"></i>
+          <h3>Live Classes</h3>
+          <p>Interactive sessions with expert instructors.</p>
+        </div>
+        <div class="feature-card">
+          <i class="fas fa-play-circle"></i>
+          <h3>Recorded Videos</h3>
+          <p>Access anytime, anywhere at your pace.</p>
+        </div>
+        <div class="feature-card">
+          <i class="fas fa-headset"></i>
+          <h3>24×7 Doubt Support</h3>
+          <p>Instant help via chat & discussion.</p>
+        </div>
+        <div class="feature-card">
+          <i class="fas fa-certificate"></i>
+          <h3>Certification</h3>
+          <p>Receive a verified course completion certificate.</p>
+        </div>
+      </div>
+    </section>
+     <button onclick="confirmEnroll()">Confirm Enrollment</button>
+
+  </div>
+  
+  <footer class="site-footer">
+  <div class="footer-content">
+    <p>Connect with us:</p>
+    <div class="social-links">
+      <a href="#" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
+      <a href="#" target="_blank"><i class="fab fa-twitter"></i> Twitter</a>
+      <a href="#" target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
+    </div>
+    <p class="copyright">
+      © 2025 infonan learning. All rights reserved.
+    </p>
+  </div>
+</footer>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const selectedCourse = JSON.parse(localStorage.getItem("selectedCourse"));
+
+  const titleElem = document.getElementById("course-title");
+  const instructorElem = document.getElementById("course-instructor");
+  const descriptionElem = document.getElementById("course-description");
+  const priceElem = document.getElementById("course-price");
+  const courseImg = document.getElementById("course-img");
+
+  if (!selectedCourse) {
+    titleElem.textContent = "No course selected.";
+    instructorElem.textContent = "";
+    descriptionElem.textContent = "";
+    priceElem.textContent = "";
+    courseImg.style.display = "none";
+  } else {
+    titleElem.textContent = selectedCourse.title || "Untitled";
+    instructorElem.textContent = "Instructor: " + (selectedCourse.instructor || "N/A");
+    descriptionElem.textContent = selectedCourse.description || "No description available.";
+    priceElem.textContent = selectedCourse.price ? `Price: ₹${selectedCourse.price}` : "Price: ₹0";
+    courseImg.src = selectedCourse.image || "https://via.placeholder.com/600x300";
+    courseImg.alt = selectedCourse.title || "Course Image";
+    courseImg.style.display = "block";
+  }
+});
+
+// Redirect to payment page on confirm button click
+function confirmEnroll() {
+  const selectedCourse = JSON.parse(localStorage.getItem("selectedCourse"));
+  if (!selectedCourse) {
+    alert("No course selected to enroll.");
+    return;
+  }
+  // Redirect to payment page to complete payment first
+  window.location.href = "payment.html";
+}
+
+</script>
+
+</body>
+</html>
