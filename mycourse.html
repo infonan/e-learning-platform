@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>My Courses and Batches</title>
+
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Fonts & Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    
+    .courses-container {
+      max-width: 90%;
+      margin: 2rem auto;
+      display: flex;
+      flex-direction: column;
+      flex-wrap: wrap;
+      gap: 2rem;
+      justify-content: center;
+    }
+
+    .course-card {
+      background: white;
+      border-radius: 0.8rem;
+      box-shadow: 0 0 0.5rem rgba(0,0,0,0.1);
+      width: 90%;
+      padding: 1rem;
+      text-align: center;
+    }
+
+    .course-card img {
+      max-width: 100%;
+      border-radius: 0.5rem;
+      height: auto;
+      margin-bottom: 1rem;
+    }
+
+    .course-card h3 {
+      margin: 0.5rem 0;
+    }
+
+    .course-card p {
+      font-size: 0.95rem;
+      color: #555;
+    }
+
+    .course-card .price {
+      font-weight: 600;
+      color: #007bff;
+      margin-top: 0.5rem;
+    }
+
+    .no-courses {
+      text-align: center;
+      font-size: 1.3rem;
+      margin: 3rem 0;
+      color: #777;
+    }
+    
+  .continue-btn {
+  display: inline-block;
+  margin-top: 0.6rem;
+  padding: 0.5rem 1rem;
+  background-color: green;
+  color: white;
+  border-radius: 0.4rem;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background 0.3s;
+}
+
+.continue-btn:hover {
+  background-color: darkgreen;
+}
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="compname">📚 INFONAN LEARN</div>
+    <nav id="nav1">
+      <ul>
+        <li><a href="home.html"><i class="fas fa-home"></i> Home</a></li>
+        <li><a href="mycourse.html"><i class="fas fa-book"></i> My Courses</a></li>
+        <li><a href="profile.html"><i class="fas fa-user"></i> Profile</a></li>
+      </ul>
+    </nav>
+    
+  </header><br>
+  <h3> MY COURSES & BATCHES</h3>
+  <main>
+    <section class="courses-container" id="courses-list">
+      <!-- Course cards will be added here dynamically -->
+    </section>
+    <div class="no-courses" id="no-courses" style="display:none;">
+      You have not enrolled in any courses yet.
+    </div>
+  </main>
+<br><br><br>
+  <footer class="site-footer">
+    <div class="footer-content">
+      <p>Connect with us:</p>
+      <div class="social-links">
+        <a href="#"><i class="fab fa-linkedin"></i> LinkedIn</a>
+        <a href="#"><i class="fab fa-twitter"></i> Twitter</a>
+        <a href="#"><i class="fab fa-instagram"></i> Instagram</a>
+      </div>
+      <p class="copyright">
+        © 2025 infonan learning. All rights reserved.
+      </p>
+    </div>
+  </footer>
+
+  <script>
+const coursesContainer = document.getElementById("courses-list");
+const noCoursesMessage = document.getElementById("no-courses");
+
+// 1. Get current user
+const user = JSON.parse(localStorage.getItem("userProfile"));
+if (!user) {
+  alert("Please login first.");
+  window.location.href = "index.html";
+}
+
+// 2. Use user-specific key for enrolled courses
+const enrolledKey = `enrolledCourses_${user.email}`;
+const enrolledCourses = JSON.parse(localStorage.getItem(enrolledKey)) || [];
+
+// 3. Render as before
+if (enrolledCourses.length === 0) {
+  noCoursesMessage.style.display = "block";
+} else {
+  noCoursesMessage.style.display = "none";
+
+  enrolledCourses.forEach((course, index) => {
+    const card = document.createElement("div");
+    card.className = "course-card";
+
+    card.innerHTML = `
+      <img src="${course.image || 'https://via.placeholder.com/300x180'}" alt="${course.title}">
+      <h3>${course.title}</h3>
+      <p><strong>Instructor:</strong> ${course.instructor || "N/A"}</p>
+      <p>${course.description || ""}</p>
+      <p class="price">Price: ₹${course.price || "Free"}</p>
+      <button class="continue-btn" onclick='watchCourse(${index})'>Watch Course</button>
+    `;
+
+    coursesContainer.appendChild(card);
+  });
+}
+
+function watchCourse(index) {
+  const course = enrolledCourses[index];
+  localStorage.setItem("selectedCourse", JSON.stringify(course));
+  setTimeout(() => {
+    window.location.href = "video.html"; // or courseplay.html
+  }, 100); // 100ms delay is safe for mobile
+}
+
+</script>
+
+</body>
+</html>
