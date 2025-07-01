@@ -11,14 +11,14 @@ body {
 /* Tablet view */
 @media (max-width: 900px) {
   html {
-    font-size: 7px; 
+    font-size: 7.5px; 
   }
 }
 
 /* Mobile view */
 @media (max-width: 600px) {
   html {
-    font-size: 5.5px;
+    font-size: 6px;
   }
 }
 
