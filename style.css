@@ -87,7 +87,7 @@ a:focus {
   border-radius: 1rem;
   padding: 0.65rem;
   box-shadow: 0 0.1rem 0.5rem rgba(0, 0, 0, 0.18);
-  margin: 1rem auto 3rem;
+  margin: 3rem auto 1rem;
   width: 90%;
 }
 .slider-container {
@@ -368,7 +368,7 @@ body {
   padding: 0.6rem;
   background-color: limegreen;
   font-size: 1.5rem;
-  margin: 1.5rem auto 3rem;
+  margin: 1rem auto 4rem;
   border: 0.1rem solid #ddd;
   border-radius: 0.4rem;
   color: white;
