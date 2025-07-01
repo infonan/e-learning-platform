@@ -53,7 +53,8 @@ INFONAN LEARN is a fully front-end web learning platform built using **HTML**, *
 /notes.html → Static notes list
 /style.css → All custom styling
 /main.js → js codes for files (index,home,course)
-
+/images → contains images used in the project
+/videos → contains videos used in the project 
 ---
 
 ## 🛠 Technologies Used
