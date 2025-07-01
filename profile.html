@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>My Profile</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Fonts & Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <!-- Custom Styles -->
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+.profile-container {
+  max-width: 90%;
+  margin: auto;
+  background: white;
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 0 0.8rem rgba(0, 0, 0, 0.1);
+  font-family: 'Inter', sans-serif;
+}
+
+.profile-container label {
+  font-weight: 600;
+  display: block;
+  margin-top: 1rem;
+}
+
+.profile-container input,
+.profile-container textarea {
+  width: 95%;
+  padding: 0.6rem;
+  margin-top: 0.4rem;
+  border-radius: 0.4rem;
+  border: 1px solid #ccc;
+  background-color: #e9ecef;
+}
+
+.profile-container textarea {
+  resize: vertical;
+}
+
+.edit-btn {
+  margin-top: 1.5rem;
+  padding: 0.8rem 1.5rem;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 0.6rem;
+  cursor: pointer;
+}
+
+.edit-btn:hover {
+  background-color: #0056b3;
+}
+  </style>
+</head>
+<body>
+
+<header>
+    <div class="compname">📚 INFONAN LEARN</div>
+    <nav id="nav1">
+      <ul>
+        <li><a href="home.html"><i class="fas fa-home"></i>Home</a></li>
+        
+        <li><a href="mycourse.html"><i class="fas fa-book"></i>My Courses</a></li>
+        <li><a href= "profile.html"><i class="fas fa-user"></i>Profile</a></li>
+      </ul>
+    </nav>
+  </header>
+  
+  <div class="profile-container">
+    <h2>My Profile</h2>
+
+    <label>Full Name</label>
+    <input type="text" id="name" readonly />
+
+    <label>Email</label>
+    <input type="email" id="email" readonly />
+
+    <label>Phone</label>
+    <input type="text" id="phone" readonly />
+
+    <label>Bio</label>
+    <textarea id="bio" readonly></textarea>
+
+    <button class="edit-btn" onclick="toggleEdit()">Edit</button>
+   <br>
+<button class="edit-btn" style="background:#dc3545;margin-left:1rem;" onclick="logoutUser()">Logout</button>
+
+<p id="enrolledCount" style="color:green;"></p>
+
+    <p id="enrolledCount" style="color:green;"></p>
+  </div>
+  <br>
+<footer class="site-footer">
+  <div class="footer-content">
+    <p>Connect with us:</p>
+    <div class="social-links">
+      <a href="#" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
+      <a href="#" target="_blank"><i class="fab fa-twitter"></i> Twitter</a>
+      <a href="#" target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
+    </div>
+    <p class="copyright">
+      © 2025 infonan learning. All rights reserved.
+    </p>
+  </div>
+</footer>
+
+
+  <script>
+    const user = JSON.parse(localStorage.getItem("userProfile"));
+
+    if (!user) {
+      alert("Please login first.");
+      window.location.href = "index.html";
+    } 
+    else {
+      document.getElementById("name").value = user.name || "";
+      document.getElementById("email").value = user.email || "";
+      document.getElementById("phone").value = user.phone || "";
+      document.getElementById("bio").value = user.bio || "";
+
+      const enrolledKey = `enrolledCourses_${user.email}`;
+const enrolledCourses = JSON.parse(localStorage.getItem(enrolledKey)) || [];
+document.getElementById("enrolledCount").textContent =
+  `You are enrolled in ${enrolledCourses.length} course${enrolledCourses.length !== 1 ? 's' : ''}.`;
+    }
+
+    function toggleEdit() {
+      const phoneInput = document.getElementById("phone");
+      const bioInput = document.getElementById("bio");
+      const button = document.querySelector(".edit-btn");
+
+      const isEditing = button.textContent === "Edit";
+
+      phoneInput.readOnly = !isEditing;
+      bioInput.readOnly = !isEditing;
+
+      if (isEditing) {
+        phoneInput.style.background = "#fff";
+        bioInput.style.background = "#fff";
+        button.textContent = "Save";
+      } else {
+        // Save back to localStorage
+        const updatedUser = {
+          ...user,
+          phone: phoneInput.value,
+          bio: bioInput.value
+        };
+
+        // Update user in allUsers list
+        let allUsers = JSON.parse(localStorage.getItem("allUsers")) || [];
+        const index = allUsers.findIndex(u => u.email === updatedUser.email);
+        if (index !== -1) {
+          allUsers[index] = updatedUser;
+          localStorage.setItem("allUsers", JSON.stringify(allUsers));
+        }
+
+        // Update logged-in profile
+        localStorage.setItem("userProfile", JSON.stringify(updatedUser));
+
+        phoneInput.readOnly = true;
+        bioInput.readOnly = true;
+        phoneInput.style.background = "#e9ecef";
+        bioInput.style.background = "#e9ecef";
+        button.textContent = "Edit";
+        alert("Profile updated!");
+      }
+    }
+    function logoutUser() {
+  localStorage.removeItem("userProfile"); // Ends the session
+  window.location.href = "index.html";    // Redirect to login
+}
+
+  </script>
+
+</body>
+</html>
