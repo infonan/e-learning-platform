@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>courses and batches</title>
+    <!-- custom fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="style.css">
+   <!-- custom icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+.search-bar {
+  display: flex;
+  justify-content: center;
+  align-items: center; /* ensures vertical alignment */
+  margin: 1.2rem;
+  gap: 0; 
+}
+
+#searchBox {
+  height: 2.6rem;
+  padding: 0 0.75rem;
+  font-size: 1rem;
+  border: 0.12rem solid #ccc;
+  border-right: none;
+  border-radius: 0.32rem 0 0 0.32rem;
+  outline: none;
+  box-sizing: border-box;
+}
+
+#searchBtn {
+  height: 2.7rem;
+  padding: 0 1rem;
+  font-size: 1rem;
+  background-color: #007bff;
+  color: white;
+  border: 0.12rem solid #007bff;
+  border-radius: 0 0.32rem 0.32rem 0;
+  cursor: pointer;
+  box-sizing: border-box;
+}
+
+#searchBtn:hover {
+  background-color: #0056b3;
+}
+
+
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="compname">📚 INFONAN LEARN</div>
+    <nav id="nav1">
+      <ul>
+        <li><a href="home.html"><i class="fas fa-home"></i>Home</a></li>
+      </ul>
+    </nav>
+   <div class="search-bar">
+  <input type="text" id="searchBox" placeholder="Search courses/batches">
+  <button id="searchBtn">Search</button>
+</div>
+
+  </header>
+  <div class="courses-container"  id="coursesList">
+    
+    <!-- Course Card -->
+    <div class="course-card">
+      <h2>Full Stack Web Development</h2>
+      <img src="/images/Logopit_1750515803229.jpg" alt="course image">
+      <p>Master HTML, CSS, JS, Node.js & more in this beginner-friendly course.</p>
+      <p><b>Price:</b> ₹1999</p>
+    <button class="enroll-btn"
+    data-title="Web Development"
+    data-instructor="John Doe"
+    data-description="Learn HTML, CSS, JavaScript"
+    data-price="1999"
+    data-image="/images/Logopit_1750515803229.jpg"
+    data-videos='[
+    {"title":"Intro to Web Dev","url":"http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerMeltdowns.mp4","duration":"10:00"},
+    {"title":"HTML Basics","url":"http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerMeltdowns.mp4","duration":"15:30"},
+    {"title":"CSS Fundamentals","url":"/videos/file_example_MP4_640_3MG.mp4","duration":"20:00"}
+  ]'>
+    Enroll Now
+  </button>
+    </div>
+
+    <div class="course-card">
+      <h2>Python Programming Batch</h2>
+            <img src="/images/Logopit_1750515650255.jpg" alt="course image">
+      <p>Start from basics to advanced Python. Ideal for coding interviews & automation.</p>
+      <p><b>Price:</b> ₹1499</p>
+   <button class="enroll-btn"
+    data-title="Python for Beginners"
+    data-instructor="Sarah Lee"
+    data-description=" Python programming: Basic to Advance"
+    data-price="1499"
+    data-image="/images/Logopit_1750515650255.jpg"
+    data-videos='[
+    {"title":"Intro to Python","url":"http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerMeltdowns.mp4","duration":"10:00"},
+    {"title":"Python Basics","url":"http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerMeltdowns.mp4","duration":"15:30"},
+    {"title":"loops in Python","url":"http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerMeltdowns.mp4","duration":"20:00"}
+  ]'>
+    Enroll Now
+  </button>
+
+    </div>
+
+    <div class="course-card">
+      <h2>UPSC Crash Course</h2>
+            <img src="/images/Logopit_1750679401264.jpg" alt="course image">
+      <p>Strategic preparation for Prelims & Mains. Includes recorded lectures & notes.</p>
+      <p><b>Price:</b> ₹2999</p>
+       <button class="enroll-btn"
+    data-title="UPSC Crash Course"
+    data-instructor="Dr. Prakash Sharma"
+    data-description="All Subjects - History, Geography, GS, Mathematics, etc."
+    data-price="2999"
+    data-image="/images/Logopit_1750679401264.jpg"
+    data-videos='[
+    {"title":"History lec 1","url":"/videos/file_example_MP4_640_3MG.mp4","duration":"10:00"},
+    {"title":"Geography lec 1","url":"/videos/file_example_MP4_640_3MG.mp4","duration":"15:30"},
+    {"title":"History lec 2","url":"/videos/file_example_MP4_640_3MG.mp4","duration":"20:00"}
+  ]'>
+    Enroll Now
+  </button>
+    </div>
+     <div class="course-card">
+      <h2>Full Stack Web Development</h2>
+            <img src="/images/Logopit_1750515803229.jpg" alt="course image">
+      <p>Master HTML, CSS, JS, Node.js & more in this beginner-friendly course.</p>
+      <p><b>Price:</b> ₹1999</p>
+ <button class="enroll-btn"
+    data-title="Web Development"
+    data-instructor="John Doe"
+    data-description="Learn HTML, CSS, JavaScript"
+    data-price="1999"
+    data-image="/images/Logopit_1750515803229.jpg"
+    data-videos='[
+    {"title":"Intro to Web Dev","url":"/videos/file_example_MP4_640_3MG.mp4","duration":"10:00"},
+    {"title":"HTML Basics","url":"/videos/file_example_MP4_640_3MG.mp4","duration":"15:30"},
+    {"title":"CSS Fundamentals","url":"/videos/file_example_MP4_640_3MG.mp4","duration":"20:00"}
+  ]'>
+    Enroll Now
+  </button>
+
+    </div>
+     <div class="course-card">
+      <h2>Full Stack Web Development</h2>
+            <img src="/images/Logopit_1750515803229.jpg" alt="course image">
+      <p>Master HTML, CSS, JS, Node.js & more in this beginner-friendly course.</p>
+      <p><b>Price:</b> ₹1999</p>
+<button class="enroll-btn"
+    data-title="Web Development"
+    data-instructor="John Doe"
+    data-description="Learn HTML, CSS, JavaScript"
+    data-price="1999"
+    data-image="/images/Logopit_1750515803229.jpg"
+    data-videos='[
+    {"title":"Intro to Web Dev","url":"/videos/file_example_MP4_640_3MG.mp4","duration":"10:00"},
+    {"title":"HTML Basics","url":"/videos/file_example_MP4_640_3MG.mp4","duration":"15:30"},
+    {"title":"CSS Fundamentals","url":"/videos/file_example_MP4_640_3MG.mp4","duration":"20:00"}
+  ]'>
+    Enroll Now
+  </button>
+    </div>
+     <div class="course-card">
+      <h2>Full Stack Web Development</h2>
+            <img src="/images/Logopit_1750515803229.jpg" alt="course image">
+      <p>Master HTML, CSS, JS, Node.js & more in this beginner-friendly course.</p>
+      <p><b>Price:</b> ₹1999</p>
+      <button class="enroll-btn"
+    data-title="Web Development"
+    data-instructor="John Doe"
+    data-description="Learn HTML, CSS, JavaScript"
+    data-price="1999"
+    data-image="/images/Logopit_1750515803229.jpg"
+    data-videos='[
+    {"title":"Intro to Web Dev","url":"/videos/file_example_MP4_640_3MG.mp4","duration":"10:00"},
+    {"title":"HTML Basics","url":"/videos/file_example_MP4_640_3MG.mp4","duration":"15:30"},
+    {"title":"CSS Fundamentals","url":"/videos/file_example_MP4_640_3MG.mp4","duration":"20:00"}
+  ]'>
+    Enroll Now
+  </button>
+
+    </div>
+     <div class="course-card">
+      <h2>Full Stack Web Development</h2>
+            <img src="/images/Logopit_1750515803229.jpg" alt="course image">
+      <p>Master HTML, CSS, JS, Node.js & more in this beginner-friendly course.</p>
+      <p><b>Price:</b> ₹1999</p>
+     <button class="enroll-btn"
+    data-title="Web Development"
+    data-instructor="John Doe"
+    data-description="Learn HTML, CSS, JavaScript"
+    data-price="1999"
+    data-image="/images/Logopit_1750515803229.jpg"
+    data-videos='[
+    {"title":"Intro to Web Dev","url":"/videos/file_example_MP4_640_3MG.mp4","duration":"10:00"},
+    {"title":"HTML Basics","url":"/videos/file_example_MP4_640_3MG.mp4","duration":"15:30"},
+    {"title":"CSS Fundamentals","url":"/videos/file_example_MP4_640_3MG.mp4","duration":"20:00"}
+  ]'>
+    Enroll Now
+  </button>
+    </div>
+     <div class="course-card">
+      <h2>Full Stack Web Development</h2>
+            <img src="/images/Logopit_1750515803229.jpg" alt="course image">
+      <p>Master HTML, CSS, JS, Node.js & more in this beginner-friendly course.</p>
+      <p><b>Price:</b> ₹1999</p>
+     <button class="enroll-btn"
+    data-title="Web Development"
+    data-instructor="John Doe"
+    data-description="Learn HTML, CSS, JavaScript"
+    data-price="1999"
+    data-image="/images/Logopit_1750515803229.jpg"
+    data-videos='[
+    {"title":"Intro to Web Dev","url":"/videos/file_example_MP4_640_3MG.mp4","duration":"10:00"},
+    {"title":"HTML Basics","url":"/videos/file_example_MP4_640_3MG.mp4","duration":"15:30"},
+    {"title":"CSS Fundamentals","url":"/videos/file_example_MP4_640_3MG.mp4","duration":"20:00"}
+  ]'>
+    Enroll Now
+  </button>
+
+    </div>
+     <div class="course-card">
+      <h2>Full Stack Web Development</h2>
+            <img src="/images/Logopit_1750515803229.jpg" alt="course image">
+      <p>Master HTML, CSS, JS, Node.js & more in this beginner-friendly course.</p>
+      <p><b>Price:</b> ₹1999</p>
+     <button class="enroll-btn"
+    data-title="Web Development"
+    data-instructor="John Doe"
+    data-description="Learn HTML, CSS, JavaScript"
+    data-price="1999"
+    data-image="/images/Logopit_1750515803229.jpg"
+    data-videos='[
+    {"title":"Intro to Web Dev","url":"/videos/file_example_MP4_640_3MG.mp4","duration":"10:00"},
+    {"title":"HTML Basics","url":"/videos/file_example_MP4_640_3MG.mp4","duration":"15:30"},
+    {"title":"CSS Fundamentals","url":"/videos/file_example_MP4_640_3MG.mp4","duration":"20:00"}
+  ]'>
+    Enroll Now
+  </button>
+    </div>
+     <div class="course-card">
+      <h2>Full Stack Web Development</h2>
+            <img src="/images/Logopit_1750515803229.jpg" alt="course image">
+      <p>Master HTML, CSS, JS, Node.js & more in this beginner-friendly course.</p>
+      <p><b>Price:</b> ₹1999</p>
+     <button class="enroll-btn"
+    data-title="Web Development"
+    data-instructor="John Doe"
+    data-description="Learn HTML, CSS, JavaScript"
+    data-price="1999"
+    data-image="/images/Logopit_1750515803229.jpg"
+    data-videos='[
+    {"title":"Intro to Web Dev","url":"/videos/file_example_MP4_640_3MG.mp4","duration":"10:00"},
+    {"title":"HTML Basics","url":"/videos/file_example_MP4_640_3MG.mp4","duration":"15:30"},
+    {"title":"CSS Fundamentals","url":"/videos/file_example_MP4_640_3MG.mp4","duration":"20:00"}
+  ]'>
+    Enroll Now
+  </button>
+    </div>
+
+    <!-- Add more course cards here -->
+  </div>
+  <div style="text-align: center; margin: 1.3rem;">
+  <button id="loadMoreBtn">Load More</button>
+</div>
+    
+  <br>
+<footer class="site-footer">
+  <div class="footer-content">
+    <p>Connect with us:</p>
+    <div class="social-links">
+      <a href="#" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
+      <a href="#" target="_blank"><i class="fab fa-twitter"></i> Twitter</a>
+      <a href="#" target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
+    </div>
+    <p class="copyright">
+      © 2025 infonan learning. All rights reserved.
+    </p>
+  </div>
+</footer>
+
+  <!-- Project -->
+  <script src="main.js"></script>
+  
+</body>
+
+  </html>
