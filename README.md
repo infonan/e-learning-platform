@@ -1,4 +1,4 @@
-# 📚 INFONAN LEARN - Front-End Learning Platform
+# 📚 INFONAN LEARN: E - Learning Platform
 
 INFONAN LEARN is a fully front-end web learning platform built using **HTML**, **CSS**, and **JavaScript** (with `localStorage` for all dynamic data). It allows users to register, enroll in courses, watch videos, track progress, and manage their profile — all without a backend.
 
