@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>WELCOME | MY LEARNING PLATFORM</title>
+  <div></div>
+   <!-- custom icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="style.css">
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+  <!-- Header -->
+  <header>
+    <div class="compname">📚 INFONAN LEARN</div>
+    <button class="login-btn" onclick="showModal()">Login / Register</button>
+  </header>
+
+  <!-- Main Content -->
+  <div class="container">
+    <h2 style="font-size: 2.2rem;">Empowering You Through Knowledge</h2>
+    <p style="font-size: 1.2rem;">Explore premium courses, track your progress, and achieve your goals.</p>
+    <button class="login-btn" onclick="showModal()">GET STARTED </button>
+  </div>
+
+<!-- Login/Register Modal -->
+<div id="loginModal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="hideModal()">&times;</span>
+
+    <div class="tab-buttons">
+      <button onclick="showTab('login')">Login</button>
+      <button onclick="showTab('register')">Register</button>
+    </div>
+
+    <!-- Login Form -->
+    <div id="login-tab">
+      <h3>Login</h3>
+      <input type="text" id="login-email" placeholder="Email">
+      <input type="password" id="login-password" placeholder="Password">
+      <button onclick="loginUser()">Login</button>
+    </div>
+
+    <!-- Register Form -->
+    <div id="register-tab" style="display: none;">
+      <h3>Register</h3>
+      <input type="text" id="reg-name" placeholder="Full Name">
+      <input type="email" id="reg-email" placeholder="Email">
+      <input type="password" id="reg-password" placeholder="Password">
+      <input type="password" id="reg-confirm-password" placeholder="Confirm Password">
+      <button onclick="registerUser()">Register</button>
+    </div>
+  </div>
+</div>
+<section class="about-company">
+  <h2>ABOUT INFONAN LEARNING</h2>
+  <p>
+    <strong>INFONAN LEARNING</strong> is a next-generation learning platform offering diverse learning tracks tailored for learners at every stage. Whether you're a student preparing for competitive exams or a professional upgrading your skills, we’ve got you covered.
+  </p>
+
+  <h3>What We Offer:</h3>
+  <ul class="about-list">
+    <li><strong>Technology Courses:</strong> Web development, app development, AI & ML fundamentals, and data structures with hands-on projects.</li>
+    <li><strong>Skilling Courses:</strong> Digital marketing, graphic design, communication skills, Excel & analytics to make you job-ready.</li>
+    <li><strong>Intermediate & High School Support:</strong> Academic-focused courses for grades 9–12 (Maths, Science, English).</li>
+    <li><strong>Government & Competitive Exams:</strong> Focused batches for SSC, Banking, Railways, and State-level exams.</li>
+    <li><strong>UPSC & Civil Services:</strong> Foundation to advanced level batches for UPSC Prelims + Mains with regular tests.</li>
+    <li><strong>Live Batches & Recorded Content:</strong> Learn at your pace with recorded classes, or join live sessions for interaction.</li>
+    <li><strong>Affordable Pricing:</strong> Multiple subscription options and course bundles starting as low as ₹499/month.</li>
+    <li><strong>Mentorship & Support:</strong> Dedicated discussion forums, mentor guidance, and progress tracking.</li>
+  </ul>
+<br>
+  <p>
+    Join <b>50,000+ learners</b> already upskilling with MyLearnHub. Empower your learning journey with expert-led content, flexible learning, and a supportive community.
+  </p>
+</section>
+
+</body>
+</html>
+
+    <section class="featuredcourse" id="f-course"><b style="font-size:2rem;">FEATURED COURSES</b>
+  <div class="slider-container">
+  <div class="slider" id="slider">
+    <div class="slide">
+      <img src="/images/Logopit_1750515803229.jpg" alt="web dev Course">
+      <h3>Web Development Course</h3>
+    </div>
+    <div class="slide">
+      <img src="/images/Logopit_1750515650255.jpg" alt="Python Course">
+      <h3>Python for Beginners</h3>
+      </div>
+    <div class="slide">
+      <img src="/images/Logopit_1750515874943.jpg" alt="ui/ux course">
+      <h3>UI/UX Design Masterclass</h3>
+    </div>
+  </div>
+</div></section>
+<footer class="site-footer">
+  <div class="footer-content">
+    <p>Connect with us:</p>
+    <div class="social-links">
+      <a href="#" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
+      <a href="#" target="_blank"><i class="fab fa-twitter"></i> Twitter</a>
+      <a href="#" target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
+    </div>
+    <p class="copyright">
+      © 2025 infonan learning. All rights reserved.
+    </p>
+  </div>
+</footer>
+
+
+  <!-- Project -->
+  <script src="main.js"></script>
+</body>
+
+</html>
