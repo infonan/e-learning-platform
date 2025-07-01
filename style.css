@@ -87,7 +87,7 @@ a:focus {
   border-radius: 1rem;
   padding: 0.65rem;
   box-shadow: 0 0.1rem 0.5rem rgba(0, 0, 0, 0.18);
-  margin: 3rem auto;
+  margin: 1rem auto 3rem;
   width: 90%;
 }
 .slider-container {
