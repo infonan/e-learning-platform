@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Watch History</title>
+
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    .history-container {
+      max-width: 95%;
+      margin: 3rem auto;
+      background: white;
+      padding: 0.2rem 2rem 3rem 2rem;
+      border-radius: 0.8rem;
+      box-shadow: 0 0 0.5rem rgba(0,0,0,0.05);
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 4rem;
+      font-weight: 600;
+      font-size: 3rem;
+    }
+
+    .history-item {
+      display: flex;
+      flex-direction: column;
+      padding: 1rem;
+      border: 0.12rem solid #ddd;
+      border-radius: 0.7rem;
+      margin-bottom: 4rem;
+      background-color: #fafafa;
+    }
+
+    .history-item h3 {
+      margin: 0 0 0.6rem 0;
+      font-size: 1.5rem;
+    }
+
+    .history-item p {
+      margin: 0 0 1rem 0;
+      font-size: 1.2rem;
+      color: #555;
+    
+    }
+
+    .no-history {
+      text-align: center;
+      font-size: 2rem;
+      color: #777;
+      margin-top: 2rem;
+    }
+
+    .back-btn {
+      margin-top: 2rem;
+      display: flex;
+      justify-content: center;
+    }
+
+    .back-btn button {
+      padding: 0.7rem 1.5rem;
+      font-size: 1rem;
+      border: none;
+      border-radius: 0.5rem;
+      background-color: green;
+      color: white;
+      cursor: pointer;
+    }
+
+    .back-btn button:hover {
+      background-color: darkgreen;
+    }
+    .continue-btn {
+  display: inline-block;
+  margin-top: 0.6rem;
+  padding: 0.5rem 1rem;
+  background-color: #007bff;
+  color: white;
+  border-radius: 0.4rem;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background 0.3s;
+}
+
+.continue-btn:hover {
+  background-color: #0056b3;
+}
+  </style>
+</head>
+<body>
+    <header>
+    <div class="compname">📚 INFONAN LEARN</div>
+    <nav id="nav1">
+      <ul>
+        <li><a href="home.html"><i class="fas fa-home"></i>Home</a></li>
+        
+        <li><a href="mycourse.html"><i class="fas fa-book"></i>My Courses</a></li>
+        <li><a href= "profile.html"><i class="fas fa-user"></i>Profile</a></li>
+      </ul>
+    </nav>
+  </header>
+  
+
+  <div class="history-container">
+    <h2>Recently Watched Videos</h2>
+    <div id="history-list"></div>
+
+    <div class="no-history" id="no-history" style="display: none;">
+      You haven’t watched any videos yet.
+    </div>
+
+    <div class="back-btn">
+      <button onclick="goBack()">← Back to My Courses</button>
+    </div>
+  </div>
+  <footer class="site-footer">
+  <div class="footer-content">
+    <p>Connect with us:</p>
+    <div class="social-links">
+      <a href="#" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
+      <a href="#" target="_blank"><i class="fab fa-twitter"></i> Twitter</a>
+      <a href="#" target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
+    </div>
+    <p class="copyright">
+      © 2025 infonan learning. All rights reserved.
+    </p>
+  </div>
+</footer>
+
+  <script>
+    function goBack() {
+      window.location.href = "mycourse.html";
+    }
+
+    const historyData = JSON.parse(localStorage.getItem("recentVideos")) || [];
+    const historyList = document.getElementById("history-list");
+    const noHistoryMsg = document.getElementById("no-history");
+
+    if (historyData.length === 0) {
+      noHistoryMsg.style.display = "block";
+    } else {
+      historyData.forEach((item, index) => {
+  const div = document.createElement("div");
+  div.className = "history-item";
+  div.innerHTML = `
+    <h3>${item.title}</h3>
+    <p><strong>Course:</strong> ${item.courseTitle || "N/A"}</p>
+    <button class="continue-btn" data-index="${index}">Continue Watching</button>
+  `;
+  historyList.appendChild(div);
+});
+document.querySelectorAll('.continue-btn').forEach(button => {
+  button.addEventListener('click', function () {
+    const index = this.dataset.index;
+    const item = historyData[index];
+
+    // Save only the clicked video back into selectedCourse
+    const selectedCourse = {
+      title: item.courseTitle,
+      description: "", // Optional
+      videos: [
+        {
+          title: item.title,
+          url: item.url,
+          duration: "" // Optional
+        }
+      ]
+    };
+
+    localStorage.setItem("selectedCourse", JSON.stringify(selectedCourse));
+    window.location.href = "video.html";
+  });
+});
+
+    }
+  </script>
+
+</body>
+</html>
