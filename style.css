@@ -304,12 +304,13 @@ body {
 /* featues section home page */
 .quick-access {
   display: flex;
+  flex-direction: column;
   flex-wrap: wrap;
   justify-content: center;
   gap: 2rem;
   padding: 2.5rem 1.25rem;
   background-color: white;
-  width: 90%;
+  width: 85%;
   margin: 0 auto;
   border: 0.125rem solid white;
   border-radius: 1rem;
@@ -319,10 +320,10 @@ body {
 
 .quick-access-card {
   background-color: white;
-  border: 0.1rem solid #ddd;
+  border: 0.12rem solid #ddd;
   border-radius: 0.8rem;
   padding: 1.2rem 1.2rem 2.6rem 1.2rem;
-  width: 23rem;
+  width: 24rem;
   text-align: center;
   box-shadow: 0 0.2rem 0.5rem rgba(0, 0, 0, 0.05);
   transition: all 0.3s ease;
@@ -330,29 +331,29 @@ body {
 }
 
 .quick-access-card:hover {
-  transform: translateY(-0.35rem);
+  transform: translateY(-0.4rem);
   box-shadow: 0 0.5rem 1.1rem rgba(0, 0, 0, 0.1);
 }
 
 .quick-access-card i {
-  font-size: 1.5rem;
+  font-size: 1.8rem;
   color: #007BFF;
   margin-bottom: 0.8rem;
 }
 
 .quick-access-card h3 {
-  font-size: 1.4rem;
+  font-size: 1.6rem;
   margin: 0.8rem 0;
 }
 
 .quick-access-card p {
-  font-size: 0.9rem;
+  font-size: 1rem;
   color: #555;
 }
 #quick-access-title {
   width: 100%;
   text-align: center;
-  font-size: 1.9rem;
+  font-size: 2rem;
   font-weight: bold;
   margin-bottom: 2rem;
   color: #333;
