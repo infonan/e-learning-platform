@@ -41,20 +41,35 @@ INFONAN LEARN is a fully front-end web learning platform built using **HTML**, *
 ## 📁 Folder Structure
 
 /index.html → Landing page with login/register modal
+
 /home.html → Main dashboard/home after login
+
 /course.html → Course listing and enrollment
+
 /enroll.html → Enroll confirmation with course details
+
 /payment.html → Pay for Course and get enrolled
+
 /mycourse.html → Enrolled course list
+
 /video.html → Course video player
+
 /progress.html → Progress tracking page
+
 /profile.html → User profile management
+
 /history.html → Recently watched videos
+
 /notes.html → Static notes list
+
 /style.css → All custom styling
+
 /main.js → js codes for files (index,home,course)
+
 /images → contains images used in the project
+
 /videos → contains videos used in the project 
+
 ---
 
 ## 🛠 Technologies Used
