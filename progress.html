@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Course Progress</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+  #progress-title {
+    margin-top: 3rem;
+  }
+    .progress-container {
+      max-width: 90%;
+      margin: 5rem auto;
+    }
+    .progress-card {
+      background: #fff;
+      border-radius: 0.8rem;
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.2);
+    }
+    .progress-card h3 {
+      margin-bottom: 0.5rem;
+    }
+    .progress-bar {
+      background: #e0e0e0;
+      border-radius: 1rem;
+      height: 1rem;
+      overflow: hidden;
+      margin-top: 0.5rem;
+    }
+    .progress-bar-fill {
+      background: greenyellow;
+      height: 100%;
+      transition: width 0.3s ease;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="compname">📚 INFONAN LEARN</div>
+    <nav id="nav1">
+      <ul>
+        <li><a href="home.html"><i class="fas fa-home"></i>Home</a></li>
+        <li><a href="mycourse.html"><i class="fas fa-book"></i>My Courses</a></li>
+        <li><a href="profile.html"><i class="fas fa-user"></i>Profile</a></li>
+      </ul>
+    </nav>
+  </header>
+<h2 id="progress-title">My Dashboard</h2>
+
+  <div class="progress-container" id="progress-container">
+    <!-- Progress cards will be inserted here -->
+  </div>
+<footer class="site-footer">
+  <div class="footer-content">
+    <p>Connect with us:</p>
+    <div class="social-links">
+      <a href="#" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
+      <a href="#" target="_blank"><i class="fab fa-twitter"></i> Twitter</a>
+      <a href="#" target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
+    </div>
+    <p class="copyright">
+      © 2025 infonan learning. All rights reserved.
+    </p>
+  </div>
+</footer>
+  <script>
+    const user = JSON.parse(localStorage.getItem("userProfile"));
+    if (!user) {
+      alert("Please login first.");
+      window.location.href = "index.html";
+    }
+
+    const enrolledKey = `enrolledCourses_${user.email}`;
+    const enrolledCourses = JSON.parse(localStorage.getItem(enrolledKey)) || [];
+    const watchedVideos = JSON.parse(localStorage.getItem("completedVideos")) || [];
+
+    const progressContainer = document.getElementById("progress-container");
+
+    if (enrolledCourses.length === 0) {
+      progressContainer.innerHTML = "<p>You have not enrolled in any courses.</p>";
+    } else {
+      enrolledCourses.forEach(course => {
+        const totalVideos = course.videos?.length || 0;
+        const watched = watchedVideos.filter(v => v.courseTitle === course.title);
+        const watchedCount = watched.length;
+        const percent = totalVideos === 0 ? 0 : Math.round((watchedCount / totalVideos) * 100);
+
+        const card = document.createElement("div");
+        card.className = "progress-card";
+        card.innerHTML = `
+          <h3>${course.title}</h3>
+          <p>${watchedCount} of ${totalVideos} videos watched (${percent}%)</p>
+          <div class="progress-bar">
+            <div class="progress-bar-fill" style="width:${percent}%"></div>
+          </div>
+        `;
+        progressContainer.appendChild(card);
+      });
+    }
+  </script>
+</body>
+</html>
