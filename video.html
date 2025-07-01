@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Course Videos</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    .container {
+      max-width: 95%;
+      margin: 0 auto;
+      padding: 1.5rem;
+    }
+    #videoheader {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.5rem 1rem ;
+      border: 0.125rem solid #e0e0e0;
+      margin-bottom: 2rem;
+      border-radius: 1rem;
+    
+    }
+    .back-btn {
+      background: #007bff;
+      color: #fff;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 0.5rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      font-size: 1rem;
+    }
+    .back-btn i {
+      margin-right: 0.4rem;
+    }
+    .course-info {
+      margin-bottom: 1.5rem;
+    }
+    .course-title {
+      font-size: 2rem;
+      margin-bottom: 0.4rem;
+      color: #2c3e50;
+    }
+    .course-description {
+      color: #666;
+      margin-bottom: 1rem;
+    }
+    .main-video {
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+      background: #000;
+      border-radius: 1rem;
+      margin-bottom: 4rem;
+      box-shadow: 0 0.3rem 0.7rem rgba(0,0,0,0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .video-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+    .video-item {
+      display: flex;
+      align-items: center;
+      background: #fff;
+      border-radius: 0.5rem;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+      padding: 0.85rem;
+      cursor: pointer;
+      transition: background 0.2s, box-shadow 0.2s;
+      border: 0.12rem solid #eee;
+    }
+    .video-item:hover, .video-item.active {
+      background: #e6f0fa;
+      box-shadow: 0 0.125rem 0.5rem rgba(0,123,255,0.08);
+      border-color: #b6d4fe;
+    }
+    .video-thumbnail {
+      width: 5.7rem;
+      height: 4rem;
+      background: #dbeafe;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 0.3rem;
+      margin-right: 1.15rem;
+      font-size: 2rem;
+      color: #007bff;
+    }
+    .video-details {
+      flex: 1;
+    }
+    .video-title {
+      font-weight: 600;
+      font-size: 1.1rem;
+      margin-bottom: 0.7rem;
+    }
+    .video-duration {
+      color: #666;
+      font-size: 0.93rem;
+    }
+    
+  </style>
+    
+ <!-- custom icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="style.css">
+  <!-- custom fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+    <div class="compname">📚 INFONAN LEARN</div>
+    <nav id="nav1">
+      <ul>
+        <li><a href="home.html"><i class="fas fa-home"></i>Home</a></li>
+        
+        <li><a href="mycourse.html"><i class="fas fa-book"></i>My Courses</a></li>
+        <li><a href= "profile.html"><i class="fas fa-user"></i>Profile</a></li>
+      </ul>
+    </nav>
+  </header>
+  <div class="container">
+    <div id="videoheader">
+      <button class="back-btn" onclick="goBack()">
+        <i class="fas fa-arrow-left"></i> Back to My Courses
+      </button>
+      <div class="course-title" id="course-title">Course Videos</div>
+    </div>
+
+    <div class="course-info">
+      <div class="course-description" id="course-desc"></div>
+    </div>
+
+    <div class="main-video" id="main-video">
+      <!-- Video player will be inserted here -->
+    </div>
+
+    <div class="video-list" id="video-list">
+      <!-- Video list will be populated by JS -->
+    </div>
+  </div>
+  <footer class="site-footer">
+  <div class="footer-content">
+    <p>Connect with us:</p>
+    <div class="social-links">
+      <a href="#" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
+      <a href="#" target="_blank"><i class="fab fa-twitter"></i> Twitter</a>
+      <a href="#" target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
+    </div>
+    <p class="copyright">
+      © 2025 infonan learning. All rights reserved.
+    </p>
+  </div>
+</footer>
+
+  <script>
+    // Retrieve the selected course from localStorage
+  const selectedCourse = JSON.parse(localStorage.getItem('selectedCourse'));
+
+  const courseTitleElem = document.getElementById('course-title');
+  const courseDescElem = document.getElementById('course-desc');
+  const mainVideoContainer = document.getElementById('main-video');
+  const videoListContainer = document.getElementById('video-list');
+
+  document.addEventListener('DOMContentLoaded', () => {
+    if (!selectedCourse || !selectedCourse.videos || selectedCourse.videos.length === 0) {
+      courseTitleElem.textContent = 'No Course or Videos Found';
+      mainVideoContainer.innerHTML = '<p style="color:#fff;text-align:center;">No video available.</p>';
+      videoListContainer.innerHTML = '';
+      return;
+    }
+
+    courseTitleElem.textContent = selectedCourse.title + ' Videos';
+    courseDescElem.textContent = selectedCourse.description || '';
+
+    // Create main video player
+    const videoPlayer = document.createElement('video');
+    videoPlayer.src = selectedCourse.videos[0].url;
+    videoPlayer.controls = true;
+    videoPlayer.autoplay = false;
+    videoPlayer.style.width = '100%';
+    videoPlayer.style.height = '100%';
+    mainVideoContainer.appendChild(videoPlayer);
+
+// ✅ Save completed video to completedVideos on end
+videoPlayer.addEventListener('ended', () => {
+  const activeVideo = selectedCourse.videos.find(v => v.url === videoPlayer.src);
+  if (!activeVideo) return;
+
+  try {
+    let completed = JSON.parse(localStorage.getItem('completedVideos')) || [];
+
+    // Avoid duplicates
+    completed = completed.filter(v =>
+      !(v.title === activeVideo.title && v.courseTitle === selectedCourse.title)
+    );
+
+    completed.unshift({
+      title: activeVideo.title,
+      url: activeVideo.url,
+      courseTitle: selectedCourse.title
+    });
+
+    // Save back
+    localStorage.setItem('completedVideos', JSON.stringify(completed));
+  } catch (e) {
+    console.error("Error saving completed video:", e);
+  }
+});
+
+ // Render video list
+  selectedCourse.videos.forEach((video, idx) => {
+      const videoItem = document.createElement('div');
+      videoItem.className = 'video-item' + (idx === 0 ? ' active' : '');
+      videoItem.innerHTML = `
+        <div class="video-thumbnail">
+          <i class="fas fa-play-circle"></i>
+        </div>
+        <div class="video-details">
+          <div class="video-title">${video.title}</div>
+          <div class="video-duration">${video.duration || ''}</div>
+        </div>
+      `;
+
+      // Click event
+  videoItem.addEventListener('click', () => {
+  document.querySelectorAll('.video-item').forEach(item => item.classList.remove('active'));
+  videoItem.classList.add('active');
+
+  videoPlayer.src = video.url;
+  videoPlayer.load();
+
+  // ✅ Save to history immediately 
+  saveVideoToHistory({
+    title: video.title,
+    url: video.url,
+    courseTitle: selectedCourse.title
+  });
+});
+
+
+      videoListContainer.appendChild(videoItem);
+    });
+  });
+
+  function goBack() {
+    window.location.href = 'mycourse.html';
+  }
+
+  function saveVideoToHistory(videoObj) {
+  try {
+    let history = JSON.parse(localStorage.getItem('recentVideos')) || [];
+
+    // Filter using both title and course name (ignore URL)
+    history = history.filter(v =>
+      !(v.title === videoObj.title && v.courseTitle === videoObj.courseTitle)
+    );
+
+    history.unshift(videoObj); // add to top
+
+    if (history.length > 5) {
+      history = history.slice(0, 5);
+    }
+
+    localStorage.setItem('recentVideos', JSON.stringify(history));
+  } catch (e) {
+    console.error("Error saving history:", e);
+  }
+}
+</script>
+</body>
+</html>
