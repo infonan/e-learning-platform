@@ -272,7 +272,7 @@ body {
   margin-bottom: 0.1rem;
 }
 .footer-content {
-  max-width: 60%;
+  max-width: 75%;
   margin: 0 auto;
 }
 
@@ -281,7 +281,7 @@ body {
 }
 
 .social-links a {
-  font-size: 0.8rem;
+  font-size: 0.9rem;
   margin: 0 0.7rem;
   text-decoration: none;
   color: #fff;
@@ -294,7 +294,7 @@ body {
 }
 
 .social-links i {
-  font-size: 0.8rem;
+  font-size: 0.9rem;
   margin-right: 0.2rem;
 }
 
@@ -341,18 +341,18 @@ body {
 }
 
 .quick-access-card h3 {
-  font-size: 1.2rem;
+  font-size: 1.4rem;
   margin: 0.8rem 0;
 }
 
 .quick-access-card p {
-  font-size: 0.6rem;
+  font-size: 0.9rem;
   color: #555;
 }
 #quick-access-title {
   width: 100%;
   text-align: center;
-  font-size: 1.8rem;
+  font-size: 1.9rem;
   font-weight: bold;
   margin-bottom: 2rem;
   color: #333;
